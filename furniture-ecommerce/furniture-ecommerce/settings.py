@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # furniture-ecommerce apps
     'api',
+    'core',
 ]
 
 MIDDLEWARE = [
