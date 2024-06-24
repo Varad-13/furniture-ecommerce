@@ -10,8 +10,9 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     inventory = models.PositiveIntegerField()
-    url = models.URLField(max_length=200)
+    sku = models.CharField(max_length=20)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    image = models.ImageField(upload_to='product_images/')
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
