@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from . import secrets
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2q5$w$i4@05av)jh@d@!#1nzff=sl3-6m43nbfa=n@yx#yo%ih'
+SECRET_KEY = secret.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # allauth apps
+    "allauth_ui",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     # allauth ui
-    "allauth_ui",
     "widget_tweaks",
     "slippers",
     # rest framework
@@ -160,3 +162,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/"
 
 ALLAUTH_UI_THEME = "dim"
+
+# Stripe Payments
+STRIPE_PUBLISHABLE_KEY = secret.STRIPE_PUBLISHABLE_KEY
+STRIPE_SECRET_KEY = secret.STRIPE_SECRET_KEY
