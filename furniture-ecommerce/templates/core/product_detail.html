@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% block title %}
+{{ product.name }}
+{% endblock %} 
+
+{% block content %}
+<div class="untree_co-section product-section before-footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
+            </div>
+            <div class="col-md-6">
+                <h1 class="product-title">{{ product.name }}</h1>
+                {% if product.discount %}
+                    <p><span class="original-price">${{ product.price }}</span> </p>
+                    <p class="discounted-price">${{ product.get_effective_price }}</p>
+                {% else %}
+                    <strong class="product-price">${{ product.price }}</strong>
+                {% endif %}
+                <p>{{ product.description }}</p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

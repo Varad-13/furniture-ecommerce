@@ -13,6 +13,10 @@ class Product(models.Model):
     sku = models.CharField(max_length=20)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     image = models.ImageField(upload_to='product_images/')
+    def get_effective_price(self):
+        if self.discount:
+            return self.price - self.discount
+        return self.price
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')

@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # allauth ui
+    "allauth_ui",
+    "widget_tweaks",
+    "slippers",
     # rest framework
     'rest_framework',
     # furniture-ecommerce apps
@@ -154,3 +158,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # allauth url configuration
 LOGIN_REDIRECT_URL = "/"
+
+ALLAUTH_UI_THEME = "dim"
