@@ -27,7 +27,7 @@ def product_detail(request, sku):
 def create_checkout_session(request, sku):
     product = get_object_or_404(Product, sku=sku)
     price = product.get_effective_price()
-    print(price)
+
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
