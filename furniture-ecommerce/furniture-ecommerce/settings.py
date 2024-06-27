@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
-from . import secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -94,10 +94,7 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
@@ -153,6 +150,12 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -164,5 +167,5 @@ LOGIN_REDIRECT_URL = "/"
 ALLAUTH_UI_THEME = "dim"
 
 # Stripe Payments
-STRIPE_PUBLISHABLE_KEY = secret.STRIPE_PUBLISHABLE_KEY
-STRIPE_SECRET_KEY = secret.STRIPE_SECRET_KEY
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
