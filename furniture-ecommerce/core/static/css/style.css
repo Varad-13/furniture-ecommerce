@@ -711,9 +711,10 @@ textarea {
     background: rgba(59, 93, 80, 0.2); }
 
 .discounted-price {
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .original-price {
-  text-decoration: overline;
+  font-size: 2rem;
+  text-decoration: line-through;
 }
