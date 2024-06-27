@@ -43,33 +43,47 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-
+						<li class="active"><a class="nav-link" href="{% url 'account_login' %}">
+							Home
+						</a></li>
+						<li><a class="nav-link" href="{% url 'account_login' %}">
+							Categories
+						</a></li>
+						<li><a class="nav-link" href="{% url 'account_login' %}">
+							Products
+						</a></li>
+						<li><a class="nav-link" href="{% url 'account_login' %}">
+							Past Orders
+						</a></li>
 					</ul>
 
 					<ul class="navbar-nav ms-3 mt-2">
-						<li><a class="nav-link" href="{% url 'account_login' %}">
-							<span class="material-symbols-sharp">
-								search
-							</span>
-						</a></li>
-						{% if request.user.is_authenticated %}
-						<li><a class="nav-link" href="{% url 'account_logout' %}">
-							<span class="material-symbols-sharp">
-								person
-							</span>
-						</a></li>
-						{% else %}
-						<li><a class="nav-link" href="{% url 'account_login' %}">
-							<span class="material-symbols-sharp">
-								person
-							</span>
-						</a></li>
-						{% endif %}
-						<li><a class="nav-link" href="cart.html">
-							<span class="material-symbols-sharp">
-								shopping_cart
-							</span>
-						</a></li>
+						<div class="d-inline-flex justify-content-between">
+							<li><a class="nav-link" href="{% url 'account_login' %}">
+								<span class="material-symbols-sharp">
+									search
+								</span>
+							</a></li>
+							{% if request.user.is_authenticated %}
+							<li><a class="nav-link" href="{% url 'account_logout' %}">
+								<span class="material-symbols-sharp">
+									person
+								</span>
+							</a></li>
+							{% else %}
+							<li><a class="nav-link" href="{% url 'account_login' %}">
+								<span class="material-symbols-sharp">
+									person
+								</span>
+							</a></li>
+							{% endif %}
+							<li><a class="nav-link" href="cart.html">
+								<span class="material-symbols-sharp">
+									shopping_cart
+								</span>
+							</a></li>
+						</div>
+						
 					</ul>
 				</div>
 			</div>

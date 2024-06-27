@@ -30,7 +30,7 @@
                             <img src="{{ product.image.url }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ product.name }}</h3>
                             {% if product.discount %}
-                                <p>${{ product.get_effective_price }}</p>
+                                <strong class="product-price">${{ product.get_effective_price }}</strong>
                             {% else %}
                                 <strong class="product-price">${{ product.price }}</strong>
                             {% endif %}
