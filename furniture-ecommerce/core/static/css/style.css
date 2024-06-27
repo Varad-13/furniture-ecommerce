@@ -709,3 +709,11 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+
+.discounted-price {
+  font-size: 2rem;
+}
+
+.original-price {
+  text-decoration: overline;
+}
