@@ -14,9 +14,9 @@
                 <h1 class="product-title">{{ product.name }}</h1>
                 {% if product.discount %}
                     <p><span class="original-price">${{ product.price }}</span> </p>
-                    <strong class="product-price">${{ product.get_effective_price }}</strong>
+                    <strong class="product-price discounted-price">${{ product.get_effective_price }}</strong>
                 {% else %}
-                    <strong class="product-price">${{ product.price }}</strong>
+                    <strong class="product-price discounted-price">${{ product.price }}</strong>
                 {% endif %}
                 <p>{{ product.description }}</p>
                 {% if request.user.is_authenticated %}
