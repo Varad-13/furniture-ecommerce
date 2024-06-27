@@ -35,26 +35,28 @@
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 			<div class="container">
-				<a class="navbar-brand" href="index.html">Lamsa Furniture<span>.</span></a>
-
+				<a class="navbar-brand" href="{% url 'index' %}">Lamsa Furniture<span>.</span></a>
+				
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="active"><a class="nav-link" href="{% url 'account_login' %}">
+						<li class="active"><a class="nav-link" href="{% url 'index' %}">
 							Home
 						</a></li>
 						<li><a class="nav-link" href="{% url 'account_login' %}">
 							Categories
 						</a></li>
-						<li><a class="nav-link" href="{% url 'account_login' %}">
+						<li><a class="nav-link" href="{% url 'products' %}">
 							Products
 						</a></li>
+						{% if request.user.is_authenticated %}
 						<li><a class="nav-link" href="{% url 'account_login' %}">
 							Past Orders
 						</a></li>
+						{% endif %}
 					</ul>
 
 					<ul class="navbar-nav ms-3 mt-2">
@@ -65,6 +67,11 @@
 								</span>
 							</a></li>
 							{% if request.user.is_authenticated %}
+							<li><a class="nav-link" href="#">
+								<span class="material-symbols-sharp">
+									shopping_cart
+								</span>
+							</a></li>
 							<li><a class="nav-link" href="{% url 'account_logout' %}">
 								<span class="material-symbols-sharp">
 									person
@@ -77,11 +84,7 @@
 								</span>
 							</a></li>
 							{% endif %}
-							<li><a class="nav-link" href="cart.html">
-								<span class="material-symbols-sharp">
-									shopping_cart
-								</span>
-							</a></li>
+							
 						</div>
 						
 					</ul>
@@ -104,13 +107,26 @@
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
 						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Lamsa Furniture<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
-
-						<ul class="list-unstyled custom-social">
-							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						<strong class="mb-4">This website does not represent the final version. There is merely a application with core functions completed</strong>
+						<p></p>
+						
+					</div>
+					<div class="col-lg-4">
+						<ul class="list-unstyled">
+							<li><strong>What works:</strong></li>
+							<li><strong>- Stripe Payments interface</strong></li>
+							<li><strong>- Search</strong></li>
+							<li><strong>- All products and product detail page</strong></li>
+						</ul>
+					</div>
+					<div class="col-lg-4">
+						<ul class="list-unstyled">
+							<li><strong>What is pending:</strong></li>
+							<li><strong>- Add to cart</strong></li>
+							<li><strong>- Past Orders</strong></li>
+							<li><strong>- Beautiful Index Page</strong></li>
+							<li><strong>- Beautiful Product Details Page</strong></li>
+							<li><strong>- Search field</strong></li>
 						</ul>
 					</div>
 				</div>

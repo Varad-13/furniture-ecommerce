@@ -52,3 +52,7 @@ def payment_success(request):
 def index(request):
     products = Product.objects.all()
     return render(request, 'core/index.html', {'products': products})
+
+def products(request):
+    products = Product.objects.all()
+    return render(request, 'core/index.html', {'products': products})
